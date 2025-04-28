@@ -1,0 +1,37 @@
+git config --global user.name  <git-usr-name>
+git config --global user.email <git-email>
+
+===
+#Initialize a local dir as a Git repo. The initial branch is called "main".
+#option -b is for branch-name.
+
+#For Git 2.28.0 or later versions
+git init -b main
+
+#Git 2.27.1 or an earlier version, set the name of the default branch using git symbolic-ref
+git init && git symbolic-ref HEAD refs/heads/main
+
+#Stages the files in localdir/repo, for the first commit.
+git add .
+git status
+git list
+git rev-list
+git diff-cached
+git show
+
+#To unstage a file
+git reset HEAD <file-name>
+
+# To commit staged files in localdir with comment using -m option
+git commit -m "SV commit"
+git commit -a
+# Above command commits the tracked changes and prepares them to be pushed to a remote repository.
+# To remove this commit and modify the file, and commit and add the file again
+git reset --soft HEAD~1
+#   make local changes and again commit with comment
+git commit -m "SV updated commit"
+
+# Not create a new github-repo online
+git remote add origin git@github.com:<git-usr-name/repo-name.git>
+git push origin master
+
